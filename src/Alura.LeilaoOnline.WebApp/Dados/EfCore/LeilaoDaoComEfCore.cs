@@ -13,14 +13,15 @@ namespace Alura.LeilaoOnline.WebApp.Dados.EfCore
             _context = context;
         }
 
-        public Leilao BuscarLeilaoPorId(int id)
+        public Leilao BuscarPorId(int id)
         {
             return _context.Leiloes.Find(id);
         }
 
-        public IEnumerable<Leilao> BuscarTodosLeiloes() => _context.Leiloes.Include(l => l.Categoria);
-
-        public IEnumerable<Categoria> BuscarTodasCategorias() => _context.Categorias;
+        public IEnumerable<Leilao> BuscarTodos()
+        {
+            return _context.Leiloes.Include(l => l.Categoria);
+        }
 
         public void Incluir(Leilao obj)
         {
